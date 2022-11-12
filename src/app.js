@@ -17,5 +17,6 @@ app.get('/', (_request, response) => {
 
 app.get('/products', productController.getProducts);
 app.get('/products/:id', productController.getProductbyId);
+app.post('/products', productController.insertProductByName);
 
 module.exports = app;
