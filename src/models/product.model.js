@@ -4,14 +4,14 @@ const connection = require('./connection');
 
 const findAllBank = async () => {
   const [result] = await connection.execute(
-    'SELECT * FROM products',
+    'SELECT * FROM StoreManager.products',
   );
   return camelize(result);
 };
 
 const findByIdBank = async (productId) => {
   const [[product]] = await connection.execute(
-    'SELECT * FROM products WHERE id = ?',
+    'SELECT * FROM StoreManager.products WHERE id = ?',
     [productId],
   );
   return camelize(product);
@@ -19,7 +19,7 @@ const findByIdBank = async (productId) => {
 
 const insertProductBank = async (productName) => {
   const [{ insertId }] = await connection.execute(
-    'INSERT INTO products (name) VALUES (?)',
+    'INSERT INTO StoreManager.products (name) VALUES (?)',
     [...Object.values(productName)],
   );
 
