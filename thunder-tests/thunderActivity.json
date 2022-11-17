@@ -8,7 +8,7 @@
     "method": "GET",
     "sortNum": 0,
     "created": "2022-11-11T19:48:53.104Z",
-    "modified": "2022-11-12T02:17:09.437Z",
+    "modified": "2022-11-16T21:53:39.376Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -22,12 +22,64 @@
     "method": "POST",
     "sortNum": 0,
     "created": "2022-11-11T23:44:09.236Z",
-    "modified": "2022-11-12T01:26:53.335Z",
+    "modified": "2022-11-12T02:38:00.772Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"name\": \"ProdutoX\"\n}",
+      "raw": "{\n  \"name\": \"Produt\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "15d867ef-9d8d-4174-9361-ea3821612e41",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:3000/sales",
+    "url": "http://localhost:3000/sales",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2022-11-12T02:59:45.432Z",
+    "modified": "2022-11-15T03:27:15.714Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "[\r\n  {\r\n    \"productId\": 1,\r\n    \"quantity\": 1\r\n  },\r\n  {\r\n    \"productId\": 2,\r\n    \"quantity\": 10\r\n  }\r\n]",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "09431e1f-55ed-4857-87ca-663ca4078caa",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:3000/sales",
+    "url": "http://localhost:3000/sales/999",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-11-16T21:18:04.901Z",
+    "modified": "2022-11-16T23:07:03.732Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "404e21d3-3e41-4447-bdde-d1f15d45910e",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:3000/products/1",
+    "url": "http://localhost:3000/products/1",
+    "method": "PUT",
+    "sortNum": 0,
+    "created": "2022-11-16T23:48:41.300Z",
+    "modified": "2022-11-17T01:41:11.838Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\": \"Martelo do Batman\"\n}",
       "form": []
     },
     "tests": []

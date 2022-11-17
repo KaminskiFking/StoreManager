@@ -1,6 +1,8 @@
 const express = require('express');
 
-const { productController } = require('./controllers');
+const { productController, saleController } = require('./controllers');
+const { notProductId, notProductQuantity } = require('./middlewares/validateSaleProducts');
+const validateNameProducts = require('./middlewares/validateNameProducts');
 
 const app = express();
 
@@ -17,6 +19,10 @@ app.get('/', (_request, response) => {
 
 app.get('/products', productController.getProducts);
 app.get('/products/:id', productController.getProductbyId);
-app.post('/products', productController.insertProductByName);
+app.post('/products', validateNameProducts, productController.insertProductByName);
+app.get('/sales/:id', saleController.getSalebyId);
+app.get('/sales', saleController.getSales);
+app.post('/sales', notProductId, notProductQuantity, saleController.insertSaleProducts);
+app.put('/products/:id', validateNameProducts, productController.updateProductbyId);
 
 module.exports = app;

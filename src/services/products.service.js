@@ -19,8 +19,20 @@ const insertProduct = async (productName) => {
   return { type: null, message: productsById };
 };
 
+const serviceUpdateProductById = async (id, productName) => {
+  const productsByIdValidate = await productModel.findByIdBank(id);
+  if (!productsByIdValidate) {
+    return { type: 'PRODUCT_NOT_FOUND', message: 'Product not found' };
+  }
+  
+  await productModel.insertProductDataBase(id, productName);
+  const productsById = await productModel.findByIdBank(id);
+  return { type: null, message: productsById };
+};
+
 module.exports = {
   findAll,
   findById,
   insertProduct,
+  serviceUpdateProductById,
 };

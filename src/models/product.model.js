@@ -17,6 +17,14 @@ const findByIdBank = async (productId) => {
   return camelize(product);
 };
 
+const findByIdsBank = async (productId) => {
+  const result = await connection.execute(
+    'SELECT * from StoreManager.products WHERE id IN (?)',
+    [productId],
+  );
+  return result[0];
+};
+
 const insertProductBank = async (productName) => {
   const [{ insertId }] = await connection.execute(
     'INSERT INTO StoreManager.products (name) VALUES (?)',
@@ -26,8 +34,17 @@ const insertProductBank = async (productName) => {
   return insertId;
 };
 
+const insertProductDataBase = async (id, productName) => {
+  await connection.execute(
+    'UPDATE StoreManager.products SET name = ? WHERE id = ?',
+    [...Object.values(productName), id],
+  );
+};
+
 module.exports = {
   findAllBank,
   findByIdBank,
   insertProductBank,
+  findByIdsBank,
+  insertProductDataBase,
 };
