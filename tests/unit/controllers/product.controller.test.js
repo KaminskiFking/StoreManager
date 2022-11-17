@@ -9,7 +9,7 @@ const productController = require('../../../src/controllers/productController');
 
 describe('Testes de unidade do Controller de Products', function () {
     afterEach(sinon.restore);
-  it('Realizando uma operação FIND com o Service Product', async function () {
+  it('Realizando uma operação FIND com o Controller Product', async function () {
       const req = {};
       const res = {};
 
@@ -24,9 +24,9 @@ describe('Testes de unidade do Controller de Products', function () {
       await productController.getProducts(req, res);
 
       expect(res.status).to.have.been.calledWith(200);
-      expect(res.json).to.have.been.calledWith(products);
+      expect(res.json).to.have.been.calledWith(message);
     });
-  it('Realizando uma operação FIND BY ID com o Service Product', async function () {
+  it('Realizando uma operação FIND BY ID com o Controller Product', async function () {
       const req = {
         params: { id: 1 },
         body: {}
