@@ -1,18 +1,19 @@
 const camelize = require('camelize');
 // const snakeize = require('snakeize');
 const connection = require('./connection');
-/* eslint max-len: ["error", { "ignoreStrings": true }] */
 
 const findAllSalesDataBase = async () => {
   const [result] = await connection.execute(
-    'SELECT s.quantity, s.product_id, s.sale_id, d.date  FROM StoreManager.sales_products AS s INNER JOIN StoreManager.sales AS d ON d.id = s.sale_id',
+    `SELECT s.quantity, s.product_id, s.sale_id, d.date  FROM StoreManager.sales_products AS s 
+    INNER JOIN StoreManager.sales AS d ON d.id = s.sale_id`,
   );
   return camelize(result);
 };
 
 const findByIdDataBase = async (saleId) => {
   const sale = await connection.execute(
-    'SELECT s.quantity, s.product_id, d.date FROM StoreManager.sales_products AS s INNER JOIN StoreManager.sales AS d ON d.id = s.sale_id WHERE id = (?)',
+    `SELECT s.quantity, s.product_id, d.date FROM StoreManager.sales_products AS s 
+    INNER JOIN StoreManager.sales AS d ON d.id = s.sale_id WHERE id = (?)`,
     [saleId],
   );
   return camelize(sale[0]);
