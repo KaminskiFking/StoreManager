@@ -18,16 +18,16 @@ describe('Testes de unidade do Service de products', function () {
     const error = await productsService.findAll();
 
     expect(error.type).to.deep.equal(null);
-    expect(error.message).to.deep.equal(product);
+    expect(error.message[0]).to.deep.equal(product);
   });
   it('Realizando uma operação FIND BY ID com o Service Product', async function () {
 
     const product = { id: 1, name: 'test' }
-    sinon.stub(productModel, 'findAllBank').resolves([product]);
+    sinon.stub(productModel, 'findByIdBank').resolves([product]);
 
     const error = await productsService.findById(1);
 
     expect(error.type).to.deep.equal(null);
-    expect(error.message).to.deep.equal(product);
+    expect(error.message[0]).to.deep.equal(product);
   });
 });

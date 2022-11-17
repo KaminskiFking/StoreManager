@@ -17,7 +17,7 @@ describe('Testes de unidade do Model de Products', function () {
 
     const result = await productModel.findAllBank();
 
-    expect(result).to.deep.equal(product);
+    expect(result[0]).to.be.deep.equal(product);
   });
   it('Realizando uma operação FIND BY ID com o Model Product', async function () {
     const product = { id: 1, name: 'test' }
@@ -25,6 +25,6 @@ describe('Testes de unidade do Model de Products', function () {
 
     const result = await productModel.findByIdBank(1);
 
-    expect(result).to.deep.equal(product);
+    expect(result).to.be.deep.equal(product);
   });
 });

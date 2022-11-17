@@ -37,16 +37,12 @@ describe('Testes de unidade do Controller de Products', function () {
       res.json = sinon.stub().returns();
       const product = { id: 1, name: 'test' }
       const message = [product];
-      sinon.stub(productsService, 'findAllById')
+       sinon.stub(productsService, 'findById')
         .resolves({ type: null, message: message });
       
       await productController.getProductbyId(req, res);
 
       expect(res.status).to.have.been.calledWith(200);
       expect(res.json).to.have.been.calledWith(message);
-      expect(response.body).to.deep.equal({
-        "id": 1,
-        "name": "test"
-      },)
     });
   });
