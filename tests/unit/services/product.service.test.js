@@ -30,4 +30,15 @@ describe('Testes de unidade do Service de products', function () {
     expect(error.type).to.deep.equal(null);
     expect(error.message[0]).to.deep.equal(product);
   });
+
+  it('Realizando uma operação DELETE BY ID com o Service Product', async function () {
+
+    const product = { id: 1, name: 'test' }
+    sinon.stub(productModel, 'deleteByIdDataBase').resolves([product]);
+
+    const error = await productsService.serviceDeleteProductbyId(1);
+
+    expect(error.type).to.deep.equal('PRODUCT_NOT_FOUND');
+    expect(error.message).to.deep.equal('Product not found');
+  });
 });

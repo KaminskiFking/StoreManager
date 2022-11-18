@@ -30,9 +30,19 @@ const serviceUpdateProductById = async (id, productName) => {
   return { type: null, message: productsById };
 };
 
+const serviceDeleteProductbyId = async (id) => {
+  const productsByIdValidate = await productModel.findByIdBank(id);
+  if (!productsByIdValidate) {
+    return { type: 'PRODUCT_NOT_FOUND', message: 'Product not found' };
+  }
+  await productModel.deleteByIdDataBase(id);
+  return { type: null, message: 'Sucessuful Delete' };
+};
+
 module.exports = {
   findAll,
   findById,
   insertProduct,
   serviceUpdateProductById,
+  serviceDeleteProductbyId,
 };

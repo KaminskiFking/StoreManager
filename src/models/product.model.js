@@ -41,10 +41,18 @@ const insertProductDataBase = async (id, productName) => {
   );
 };
 
+const deleteByIdDataBase = async (productId) => {
+ await connection.execute(
+    'DELETE FROM StoreManager.products WHERE id = ?',
+    [productId],
+  );
+};
+
 module.exports = {
   findAllBank,
   findByIdBank,
   insertProductBank,
   findByIdsBank,
   insertProductDataBase,
+  deleteByIdDataBase,
 };
